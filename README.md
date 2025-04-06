@@ -1,44 +1,135 @@
-# Keylogger Demonstration Project
+# 🧠 Keylogger Demonstration Project
 
-**Disclaimer**: This project is for educational and cybersecurity research purposes only. It demonstrates keylogger concepts for defensive cybersecurity awareness. Unauthorized use against systems you don't own or have permission to test is illegal.
+> **Disclaimer:** This project is strictly for **educational** and **authorized cybersecurity research** purposes. It demonstrates how keyloggers work and how to defend against them.  
+> **Do not deploy this tool on systems you do not own or have written permission to test. Unauthorized use is illegal.**
 
-## Project Overview
+---
 
-This project demonstrates:
-- How keyloggers operate at a technical level
-- Common data exfiltration techniques
-- Defensive detection methods
-- Ethical considerations around monitoring tools
+## 📌 Project Overview
 
-The implementation includes:
-- 🛠️ Builder GUI to create keylogger executables
-- 👂 Listener server to monitor keystrokes (for authorized testing only)
-- 🔐 Secure socket communication demonstration
+This project simulates a real-world keylogger for **educational** and **defensive research** purposes. It helps users understand:
 
-## Ethical Use Cases
+- Keylogger operation mechanics
+- Data exfiltration via network sockets
+- How to detect, analyze, and defend against keylogging behavior
+- The ethical implications of surveillance tools
 
-Appropriate uses include:
-- Penetration testing with explicit written consent
-- Corporate security audits
-- Cybersecurity education
-- Parental control systems (with full disclosure)
+### Included Features:
 
-## Technical Components
+- 🛠️ **Builder GUI** – Easily create custom keylogger executables
+- 👂 **Listener Server** – Monitor and log captured keystrokes
+- 🔐 **Secure Socket Communication** – For reliable data transfer
 
-### Builder GUI (`gui.py`)
-- Creates customized keylogger executables
-- Listens for incoming keylogger connections
-- Displays captured keystrokes in real-time
-- Validates input parameters
+---
 
-### Keylogger (`keylogger.py`)
-- Captures and transmits keystrokes
-- Uses Python's `pynput` library
-- Implements socket communication
-- Includes connection retry logic
+## ✅ Ethical Use Cases
 
-## Setup Instructions
+This tool can be ethically used in:
 
-1. **Requirements**:
-   ```bash
-   pip install pynput pyinstaller tkinter
+- ✅ **Penetration testing** with written consent
+- ✅ **Corporate red teaming**
+- ✅ **Cybersecurity education and lab exercises**
+- ✅ **Parental controls** (with full transparency)
+
+---
+
+## ⚙️ Technical Components
+
+### `gui.py` – Keylogger Builder
+- Input IP and port for the keylogger connection
+- Displays received keystrokes in real time
+- Supports building a `.exe` payload via PyInstaller
+- Handles input validation and error catching
+
+### `keylogger.py` – Payload
+- Uses `pynput` to capture keyboard input
+- Transmits data using TCP sockets
+- Supports retry logic for reconnection
+- Gracefully exits on `ESC` key
+- Detects and formats special keys
+
+---
+
+## 🧰 Requirements
+
+Install all dependencies with:
+
+```bash
+pip install -r requirements.txt
+```
+
+### `requirements.txt`
+
+```
+pynput
+tkinter
+pyinstaller
+```
+
+---
+
+## 🚀 Usage Instructions
+
+### 1. Run the Builder GUI
+
+```bash
+python gui.py
+```
+
+### 2. Build the Executable (.exe)
+
+> Windows Only (Run in CMD or PowerShell):
+
+```bash
+pyinstaller --onefile --noconsole keylogger.py
+```
+
+- Output will be in the `/dist` directory.
+- Move the `.exe` to a test environment **you are authorized to analyze**.
+
+### 3. Deploy & Monitor
+
+- Run the `.exe` payload on an authorized machine.
+- Start the listener in the GUI to receive keystrokes.
+- Captured keystrokes will appear in the GUI panel in real time.
+
+---
+
+## 🛡️ Detection & Prevention
+
+This tool aids defenders in understanding and testing detection techniques:
+
+- Monitor for hidden Python-based or renamed `.exe` processes
+- Analyze outbound connections to suspicious IPs or unusual ports
+- Use behavior-based detection in EDR and sandboxes
+- Alert on keylogging libraries like `pynput` being imported
+
+---
+
+## ⚖️ Legal Notice
+
+This project is licensed for:
+
+- ✅ Ethical hacking courses
+- ✅ Controlled lab environments
+- ✅ Client-approved penetration testing
+- ❌ Not for spying, stalking, or unauthorized surveillance
+
+By using this project, you confirm that you understand and will adhere to **all applicable laws and ethical guidelines**.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+You can submit:
+- 🔐 New security features
+- 🧠 Improved logging or monitoring methods
+- 📖 Updated ethical usage and documentation
+
+To contribute, fork the repo and submit a pull request.
+
+---
+
+## 👻 Ghost – Because even ghosts leave traces
